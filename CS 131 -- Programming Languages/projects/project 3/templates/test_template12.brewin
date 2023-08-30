@@ -1,0 +1,14 @@
+(tclass MyGenericClass (field_type)
+  (method void print_value ((field_type x)) (print x))
+)
+
+(class main
+  (method void main ()
+    (begin
+      (let ((MyGenericClass@int myIntClass null))
+        (set myIntClass (new MyGenericClass@int) )
+        (call myIntClass print_value "This should cause a type error")
+      )
+    )
+  )
+)

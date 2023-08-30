@@ -1,0 +1,30 @@
+From 3584cff71c62586c050505b80d7d4c9b1b290101 Mon Sep 17 00:00:00 2001
+From: Elijah Newren <newren@gmail.com>
+Date: Sun, 19 Sep 2021 01:48:55 +0000
+Subject: [PATCH] merge-ort: fix completely wrong comment
+
+Not sure what happened, but the comment is describing code elsewhere in
+the file.  Fix the comment to actually discuss the code that follows.
+
+Signed-off-by: Elijah Newren <newren@gmail.com>
+Signed-off-by: Junio C Hamano <gitster@pobox.com>
+---
+ merge-ort.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/merge-ort.c b/merge-ort.c
+index 6eb910d6f0..b346e23ff2 100644
+--- a/merge-ort.c
++++ b/merge-ort.c
+@@ -4065,7 +4065,7 @@ static int record_conflicted_index_entries(struct merge_options *opt)
+ 	state.istate = index;
+ 	original_cache_nr = index->cache_nr;
+ 
+-	/* Put every entry from paths into plist, then sort */
++	/* Append every entry from conflicted into index, then sort */
+ 	strmap_for_each_entry(&opt->priv->conflicted, &iter, e) {
+ 		const char *path = e->key;
+ 		struct conflict_info *ci = e->value;
+-- 
+2.27.0
+

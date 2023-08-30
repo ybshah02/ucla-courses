@@ -1,0 +1,33 @@
+CS 32 Homework 2 -- Yash Shah UID: 405-565-567
+
+Problem 2.
+
+First 12 coordinates popped off the stack algorithm --
+1. (3,5)
+2. (3,6)
+3. (3,4)
+4. (2,4)
+5. (1,4)
+6. (1,3)
+7. (1,2)
+8. (1,1)
+9. (2,1)
+10. (3,3)
+11. (4,5)
+12. (5,5)
+
+Problem 4. 
+
+First 12 coordinated popped off the queue algorithm --
+1. (3,5)
+2. (4,5)
+3. (3,4)
+4. (3,6)
+5. (5,5)
+6. (3,3)
+7. (2,4)
+8. (6,5)
+9. (5,4)
+10. (1,4)
+11. (7,5)
+12. (5,3)The difference in these two algorithms lie in the orientation of the data structures. The stack algorithm checks each possible path till it either reaches a dead end or hits the end point, an in doing so results in a greater amount of time spent in finding the end point / discovering that there is no end point that can be reached. The queue algorithm checks each direction one step at a time before determining the next step, hence providing a more efficient process towards finding the end point / discovering there is no end point that can be reached. This means that the first 12 coordinates of the algorithm that's popped off the queue is different than the first 12 coordinates popped off by the stack algorithm -- if the search process is path oriented rather than direction oriented, the two algorithms will search and pop off different coordinates at the top of their data structures. 

@@ -1,0 +1,24 @@
+(tclass Foo (field_type)
+  (method void chatter ((field_type x)) 
+    (call x quack)
+  )
+  (method bool compare_to_5 ((field_type x)) 
+    (return (== x 5))
+  )
+)
+
+(class Duck
+  (method void quack () 
+    (print "quack"))
+)
+
+(class main
+  (field Foo@Duck t1)
+  (method void main () 
+    (begin
+      (set t1 (new Foo@Duck))
+      (call t1 chatter (new Duck))  # works fine - ducks can talk
+      (call t1 compare_to_5 5)  # should generate a type error - ducks can't be compared to ints
+    )
+  )
+)

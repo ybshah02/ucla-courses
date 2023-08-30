@@ -1,0 +1,29 @@
+Yash Shah #405-565-567
+
+1. I wouldn't say that this assignment was particularly challenging in terms of the actual code we had to write, but a major portion of this assignment that was notably challenging was the designing process of the isValidResultString function--i.e. what type of loop would be most effective and efficient in getting the desired results, determining how the indexNumber function should return an index to not create index out of bound errors, how to take note of whether both positive and negative tests are reported or not, how to take note of whether there are multiple batches to loop through and how to do so without causing error to the generic process of the do-while loop, and such. After designing how these different components would interact, the code was fairly straight forward. I had to make some changes to the extractNumber function that was given to us in order to resolve some troubles regarding 0s and leading 0s, but it wasn't too significant of an issue. 
+
+2. 
+
+extractNumber -- the extractNumber function parses through a string starting at the given index that is less than the size of the string, and ends when the character at the index is a non-digit. For each digit that is found, the integer value is multiplied by 10 and the digit is added to the end of it to ensure that integer values are holding the correct place values as implied in the string. i.e -- if the string number is '256', the loop would look like as: '2' -> '20+5'='25' -> '250 + 6' = 256.
+
+indexNumber -- the indexNumber function is very similar to extractNumber, but instead of the adding of digits in the while loop, the index is just added by 1. Following the execution of the while loop, the index value returned is the index value AFTER the last digit. i.e -- if the string is "R15+12-3".
+the indexNumber function starting at index 4 will return index 6 which is '-'.
+
+isValidResultString -- the way I composed this function is by first designing the process to which the code parses through a batch and extracts the positive and negative values, and making sure the batch is of correct form. Then I was able to generalize the program by creating a do while loop that repeatedly checks each batch one by one instead of all at once. the isValidResultString function begins at index i = 0. both next_batch and correct_batch are false unless indicated to be true. The loop method I've chosen for this function is a do-while loop because I know that there will always be at least one batch, and I believe that the code is more efficient if the loops parse and extract information on the batches one at a time. The function begins by checking the initial index of i is the character 'R'. If so, variables has_pos, has_neg, num_pos, and num_Neg are created and set to default values false, and 0, respectively. the function then finds the total cases by extracting the number at index i+1, or the number immediately after R. if the total_cases is greater than 0, the function finds the index of the character after the number using indexNumber and sets variable j as that. the while loop begins on the condition cont = true. within the while loop, the function first checks there are no leading zeros by making sure that if there is a second digit after an initial 0, the function returns false. if there are no leading zeros, then a number is extracted at index j+1. if the string at j is + or -, and the num is greater than 0, it tracks that in the has_pos/neg and num_pos/neg variables listed above. the index of j is then the index of the first non-digit character after the extracted number, and an if statement checks to make sure that if the character at this new j value is not R and is less than the size of the string, cont will continue to be true so that it can find the other positive/negative values. if the string value at J is R or outside the bounds of the string, then we have to make sure that both has_pos and has_negative are true, and that num_pos + num_neg = total_cases. if that's so, then correct_batch is set to true and the program is allowed to continue. Then we check to make sure that if the string value at j is R, we set next_batch to true so that the do while loop can continue and we set the index value of i to j, so that the program "begins" again at the initial character 'R'. 
+
+positiveTests, negativeTests, totalTests, and batches -- these functions are almost nearly identical, except that each function has different values to find. These functions all use a for-loop to parse through the result string to find a specific character ('+','-','R'), and extract a number at an index of +1 to where they find the character or count the number of times that character appears. 
+
+3.
+
+"r1+0-1" -- batch must be reported with R
+"R1+-1" -- a number of positive tests is required
+"R1+1-" -- a number of negative tests is required
+"R1+0-1   asdfR" -- extra characters not allowed
+"R5+00003-0002" -- leading zeros not allowed
+"R100+50-50" -- program doesn't mistake 100 for leading zeros due to two zeros at end
+"R5+0-0" -- positive and negative results must equal the total number of tests being reported
+"R5+3-2R55+23-32R5+4-1R29+17-12R7-4+3" -- can handle multiple batches successfully
+"R5.5+3.25-2.25" -- only integers allowed
+"R5+3-2 R6+2-4" -- no spaces in between batches
+"R5+3- 2" -- no spaces in between numbers
+"R5+5" -- needs both positive and negative tests

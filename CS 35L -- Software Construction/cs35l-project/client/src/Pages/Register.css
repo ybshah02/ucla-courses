@@ -1,0 +1,91 @@
+* 
+{
+    margin: 0;
+    padding: 0;
+    font-family:'Georgia', Georgia, serif;
+}
+
+h2
+{
+    color: #005587;
+    position: relative;
+    padding: 10px;
+}
+
+.Register .MainLogo
+{
+    position: relative;
+    width: 20%;
+    height: auto;
+    padding-top: 25px;
+    padding-bottom: 10px;
+    filter: drop-shadow(0px 2px 3px #AFAFAF)
+}
+
+.Register .FormBox 
+{
+    position: relative;
+    padding: 10px;
+    height: 50px;
+}
+
+
+.Register textarea 
+{
+    position: relative;
+    width: 600px;
+    height: 150px;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 1px solid #000000;
+    padding: 20px;
+    resize: none;
+} 
+
+.Register input 
+{
+    position: relative;
+    width: 600px;
+    box-sizing: border-box;
+    border-radius: 25px;
+    font-size: large;
+    border: 1px solid #000000;
+    padding: 20px;
+    margin-bottom: 50px;
+    filter: drop-shadow(0px 2px 2px #2F2F2F)
+}
+
+.Register .Buttons
+{
+    padding-top:10px;
+    padding-bottom:50px;
+}
+
+.Register .BackToLogin
+{
+    position: relative;
+    background-color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 25px;
+    font-size: large;
+    filter: drop-shadow(0px 2px 2px #2F2F2F)
+}
+
+.Register .CreateNewAccount
+{
+    position: relative;
+    margin-left: 240px;
+    border-radius: 25px;
+    border-color: #FFB81C;
+    border: 2px solid #FFB81C;
+    background-color: #FFB81C;
+    padding: 15px;
+    font-size: large;
+    filter: drop-shadow(0px 2px 2px #2F2F2F)
+}
+
+
+#error-text {
+    color: red;
+}

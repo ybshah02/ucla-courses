@@ -1,0 +1,58 @@
+Yash Shah #405-565-567 Report Project 5
+
+1. 
+To be quite honest, I didn't find the project that challenging in terms of the syntax-
+I'd say the separation between the header files and source files weren't clearly explained during 
+lecture so I had to spend some extra time researching how to organize these files in the most
+professional way I could. 
+
+I also found that the description for the assignment was a little confusing, so unpacking all the 
+information took me extra time as well.
+
+2. 
+
+PlaneFlight f( "", "MSP", "LAX", 100.00, 500) -- object doesn't store empty name value
+PlaneFlight f( "Yash", "", "LAX", 100.00, 500) -- object doesn't store empty fromCity value
+PlaneFlight f( "Yash", "MSP", "", 100.00, 500) -- object doesn't store empty toCity value
+PlaneFlight f( "Yash", "MSP", "MSP", 100.00, 500) -- object doesn't store same fromCity and toCity value
+PlaneFlight f( "Yash", "MSP", "LAX",-20, 500) -- object doesn't store negative cost value
+PlaneFlight f( "Yash", "MSP", "LAX", 100.00,0) -- object doesn't store 0 mileage
+PlaneFlight f( "Yash", "MSP", "LAX", 100.00,-20) -- object doesn't store negative mileage
+
+test template for remaining tests: 
+PlaneFlight f( "Yash", "MSP", "LAX", 100.00, 500);
+PlaneFlight t1( "Hsay", "MSP", "LAX", 100.00, 500)
+PlaneFlight t2( "Yash", "MSP", "LAX", 0, 500)
+FrequentFlyerAccount account("Yash");
+
+f.getName() -- returns current passenger name of f object
+f.getFromCity() -- returns current fromCity of f object
+f.getToCity() -- returns current toCity of f object
+f.getCost() -- returns current cost of f object
+f.getMileage() -- returns current mileage of f object
+f.setName("Shah") -- sets passenger name of f object to Shah
+f.setName("") -- object cannot set empty value for name
+f.setFromCity("CHI") -- change fromCity to completely different value
+f.setFromCity("") -- fromCity mutator value cannot be empty
+f.setFromCity("LAX") -- fromCity mutator value cannot equal toCity
+f.setToCity("CHI") -- change toCity to completely different value
+f.setToCity("") -- toCity mutator value cannot be empty
+f.setToCity("MSP") -- toCity mutator value cannot equal fromCity
+f.setCost(50) -- change value of cost
+f.setCost(-5) -- cost of value cannot be negative
+f.setMileage(100) -- change value of mileage
+f.setMileage(-5) -- cost of mileage cannot be negative
+f.setMileage(0) -- cost of mileage cannot be 0
+
+account.getName() -- returns account name of account object
+account.getBalance() -- returns 0 to indicate initial value of 0
+account.addFlightToAccount(t1) -- fails to add flight, name doesn't match account
+account.addFlightToAccount(t2) -- when cost is 0, mileage isn't added to balance
+account.addFlightToAccount(f) -- adds mileage to account balance
+account.canEarnFreeFlight(600) -- mileage greater than balance, yields false
+account.canEarnFreeFlight(400) -- mileage less than balance, yields true. doesn't change anything. 
+account.freeFlight("LAX", "MSP", 500, f) -- correctly switches from and to cities and ensures a free flight, thus decreasing the account balance and setting cost to 0
+account.freeFlight("LAX", "CHI", 600, f) -- mileage too great to earn free flight
+account.freeFlight("", "CHI", 500, f) -- fromCity cannot be empty
+account.freeFlight("LAX", "", 500, f) -- toCity cannot be empty
+account.freeFlight("LAX", "LAX", 500, f) -- fromCity and toCity cannot be the same

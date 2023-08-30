@@ -1,0 +1,17 @@
+(tclass ReturnMethod (type1)
+  (method type1 return_value ((type1 x)) 
+    (return x)
+  )
+)
+
+(class main
+  (field ReturnMethod a)
+  (method void main ()
+    (begin
+      (let ((ReturnMethod@int myClass))
+        (set myClass (new ReturnMethod@int) )
+        (print (call myClass return_value 5))
+      )
+    )
+  )
+)

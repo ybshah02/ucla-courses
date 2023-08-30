@@ -1,0 +1,22 @@
+(tclass MyGenericClass (field_type)
+    (method void print_value ((field_type x)) 
+        (print x)
+    )
+)
+
+(class main
+  (method void main ()
+    (begin
+      (let ((MyGenericClass@int myIntClass null)
+            (MyGenericClass@string myStringClass null)
+            )
+        (begin
+          (set myIntClass (new MyGenericClass@int) )
+          (set myStringClass (new MyGenericClass@string) )
+          (call myIntClass print_value 5)
+          (call myStringClass print_value "Hello, Brewin!")
+        )
+      )
+    )
+  )
+)

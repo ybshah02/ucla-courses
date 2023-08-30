@@ -1,0 +1,19 @@
+Yash Shah
+
+Started with errors due to already installed versions of node that conflicted with the creation and running of the app -- had to uninstall node using homebrew uninstall node and then redownload node. 
+
+Installed node js using pkg installer online, and created the app using npx-create-app my-app. Deleted the src files, and added the tic tac toe src files to be ran using npm start.
+
+Added a value to the renderSquare function to identify each block by number i, and then added the value to show in the render function of Square. 
+
+Then added an interactive element of the square component. First changed the button tag to wait for an event on-click. Then we added a constructor to store the state of the square instances, and set the onclick event handler to change the state of the square instance to the character 'X'. Now after downloading the react web tools app, clicking a square adds an 'X' to the column. 
+
+Added a constructor to the board class to create and store an array of 9 elements with a default value of null. Then we set the renderSquare to return the value of a box associated with the array we have initialized, and call a function when a square is clicked. 
+
+This function is handleClick, which takes a temporary instance of the array of squares, and sets the squares state to the array reflecting the changes made after the click. 
+
+Then we deleted the Square class and instead created a function Square that returns a square instance that can be clicked, and displays the square's value. Then added a variable to store whether x has the next move or not, and set the default to true to start the game. HandleClick and the message on the next player's turn is updated to determine whether to display an 'X' or an 'O'.
+
+After that, we added a function to determine the winner of the game and display the results of the game. And then added a statement in handleClick to ensure that no clicks can be made if a square is already filled or if the game is already won. 
+
+Then, to implement time travel with undos, we make history an array of squares objects to track each move and store previous versions of the board. We use the same functionalities as before, but on the latest object in the history array. If one jumps to an old version of the board, we set the state of the board to that version, and if one makes a move then we override every move after the entry in history and start from there. 

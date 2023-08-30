@@ -1,0 +1,46 @@
+First, I unpacked the .tgz file under my randall directory, and then saw the .git file was 
+hidden using ls -al so I restored all the files using git restore * into a folder randall. 
+Then I cloned the repo and kept the clone in a directory randall-repo. After reading 
+through the files, I implemented a quick shell script to test whether ./randall 50 gives
+me an output that is 50B long using the command 'wc -c'. 
+
+Then I began to split up and modularize the functions in randall.c. I moved the hardware 
+implementation to the rand64-hw files, and software implementation to the rand64-sw files. 
+I moved the writebytes function to output files. And then I made sure the include tags were
+ correct, header files had been given the ifndef headers, removed the statics and ensured 
+that each file were calling the functions correctly. This took some time, but I eventually 
+got it to work with a lot of trial and error.
+
+Then I worked on the options file -- created a struct to hold information after parsing
+the passed arguments using getopt. 
+
+After the options file worked after trial and error with getopt, I wrote the implementation in
+randall.c to take the struct returned by options function and determine what to do based on 
+passed inputs, such as rdrand, mrand48_r, /F. I wrote rdrand pretty easily as it was based on 
+the skeleton code given to us, but then I had to implement the mrand48_r function similar to 
+the structure of rand64-hw and rand64-sw. Figuring out how to do this was pretty easy given the
+documentation supplied on datatypes passed into mrand_r--have to make sure to cast correctly to
+unsigned long long. The file input was also pretty easy--just have to use the first character
+to deduce if type /F.
+
+Output took the longest time. The writeoutput function had the same implmentation as the skeleton
+if the output information we got from argCheck is 0, but if it isn't, we have to allocate a buffer
+using malloc which you have to make sure is of the right size and then allocate random values to
+each individual element of the malloc. Remember to free the malloc!!! 
+
+Then I wrote the implementation for this in randall. 
+
+There were a lot of fixes in these that needed to be made such as reordering some lines in if 
+statements and general structure of the code, etc.  There were some pointer errors that I had to 
+spend some time in relation to the malloc usage and buffer creation in some of these files. also
+paying attention to casting and data types was super critical and difficult to work with.
+
+After writing test cases and working on performance, I checked the timings for once and for all.
+I missed a few cases where the speed was slower as I had forgotten to note it down before,
+but for reference it went from crashing, to taking 20-30s, to sub-10.
+
+For time dd if=/dev/urandom ibs=8192 obs=8192 count=16384 >/dev/null -- real: 0.922s, user: 0.011s,
+sys: 0.906s
+For time ./randall 133562368 >/dev/null -- real: 3.125s, user: 3.099s, sys: 0.010s
+For time ./randall 133562368 | cat >/dev/null -- real: 3.229s, user: 3.111s, sys: 0.266s
+For time ./randall 133562368 >rand.data -- real: 4.631, user: 3.156s, sys: 0.126s

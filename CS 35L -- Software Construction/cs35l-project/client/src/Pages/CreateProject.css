@@ -1,0 +1,108 @@
+* 
+{
+    margin: 0;
+    padding: 0;
+    font-family:'Georgia', Georgia, serif;
+}
+
+h2
+{
+    color: #005587;
+    position: relative;
+    padding: 10px;
+}
+
+.CreateProject .MainLogo
+{
+    position: relative;
+    width: 20%;
+    height: auto;
+    padding-top: 25px;
+    padding-bottom: 10px;
+    filter: drop-shadow(0px 2px 3px #AFAFAF)
+}
+
+.CreateProject .ProjectName 
+{
+    position: relative;
+    padding: 10px;
+    height: 50px;
+}
+
+.CreateProject .ProjectDescription
+ {
+    height: 150px;
+    position: relative;
+    padding: 10px;
+}
+
+.CreateProject .ProjectTags 
+{
+    position: relative;
+    height: 50px;
+    padding: 10px;
+}
+
+.CreateProject .ProjectGitHub 
+{
+    position: relative;
+    height: 50px;
+    padding: 10px;
+}
+
+.CreateProject textarea 
+{
+    position: relative;
+    width: 600px;
+    height: 150px;
+    box-sizing: border-box;
+    border-radius: 25px;
+    font-size: larger;
+    filter: drop-shadow(0px 2px 2px #2F2F2F);
+    border: 1px solid #000000;
+    padding: 20px;
+    resize: none;
+} 
+
+.CreateProject input 
+{
+    position: relative;
+    width: 600px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    font-size: larger;
+    filter: drop-shadow(0px 2px 2px #2F2F2F);
+    border: 1px solid #000000;
+    padding: 20px;
+}
+
+.CreateProject .Buttons
+{
+    padding-top:10px;
+    padding-bottom:50px;
+}
+
+.CreateProject .BackToProjects
+{
+    position: relative;
+    background-color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 25px;
+    font-size: large;
+    filter: drop-shadow(0px 2px 2px #2F2F2F)
+}
+
+.CreateProject .CreateNewProject
+{
+    position: relative;
+    border-radius: 25px;
+    margin-left: 240px;
+    border-color: #FFB81C;
+    border: 2px solid #FFB81C;
+    background-color: #FFB81C;
+    font-size: large;
+    padding: 15px;
+    filter: drop-shadow(0px 2px 2px #2F2F2F)
+}
+

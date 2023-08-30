@@ -1,0 +1,17 @@
+#!/usr/bin/env python3
+import sys
+
+dict = {}
+tzarr = []
+for line in sys.stdin:
+	if line[0:4] == "Date":
+		tz = line[-6:-1]
+		if tz in tzarr:
+			dict[tz]+=1
+		else:
+			tzarr.append(tz)
+			dict[tz] = 1
+
+for key, value in sorted(dict.items()):
+	sys.stdout.write(key + " ")
+	sys.stdout.write(str(value) + "\n")
