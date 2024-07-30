@@ -1,0 +1,5 @@
+Searching through the commits by searching "git diff --relative" brought me to 3 commits -- one that  adds the relative option to the diff family, one that merged branch 'dd/diff-ffiles-unmerged-fix' into maint which caused the segfaulting and/or produced incorrect results when there were unmerged paths, and the last that did the same thing but under a different commit.
+
+Now we have to see which of these two commits actually made this change happen -- it would be the commit with id 872c9e67ecf9ecb525e320e46171027c7742e76a because this commit was earlier and committed changes from its parent 8174627b3d32dc80cb477b3fa46971955f26c6b2, while the other reference with id c8f491668e46d66290aec97caaf94fe2c1ecccbd is a merge.
+
+Therefore, the code committed in 8174627b3d32dc80cb477b3fa46971955f26c6b2 by Junio C Hamano fixed the problem in question.

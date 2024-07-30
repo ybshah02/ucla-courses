@@ -1,0 +1,69 @@
+Yash Shah -- #405-565-567
+
+a. the main obstacles that I overcame in this assignment are as follows
+-making sure that the elements that we parsed through are all within the bounds of an array-- often I'd forget a -1 or < / <= which would cause an out-of-bound exception 
+-identicalValuesTogether function -- it took me a good 15-20 minutes to figure out how to ensure that identical values that weren't next to each other were considered not identical but not in the case that each element between the two identical values are also the same values.
+-hasTwoOrMoreDuplicates -- it took me a bit to make sure that for an element that has already been found for duplicates wasn't counted again in the count of duplicates
+-replaceFirstAndLastOccurrences -- it also took me a second to make sure that elements with only one occurrence for a charToFind isn't counted more than once when charToReplace = charToFind
+
+b. 
+
+locateMaximum(["A", "B", "C", "D"], 4) -- function works
+locateMaximum(["A", "B", "C", "D"], 0) -- n = 0
+locateMaximum(["A", "B", "C", "D"], -20) -- n < 0
+locateMaximum(["A", "Basdfads", "Casddasdf", "Casddasdf"], 4) -- works with strings larger than one character
+locateMaximum(["A", "B", "C", "D"], 2) -- works for n < length of string
+
+countFloatingPointValues([ "A", "B", "C", "B"], 4) -- no numbers
+countFloatingPointValues([ "1.5", "B", "6.5", "B"], 0) -- n = 0
+countFloatingPointValues([ "1.5", "B", "6.5", "B"], -20) -- n < 0
+countFloatingPointValues([ "A", "B", "C", "B"], 2) -- works for n < length of string
+countFloatingPointValues([ ".", "1.5", "C", "-1.5"], 4) -- singular decimal counts, - before doesn't
+countFloatingPointValues([ "0.", ".0", "-.", "+1.5"], 4) -- decimal regardless of digits count, +/i doesn't
+countFloatingPointValues([ "0.", ".0", "1000", "5.5."], 4) -- multiple decimals don't work, integer counts as floating point val as well
+
+hasNoCapitals( [ "A", "B", "C", "B" ], 0 ) -- n = 0
+hasNoCapitals( [ "A", "B", "C", "B" ], -30 ) -- n < 0
+hasNoCapitals( [ "A", "B", "C", "B" ], 3 ) -- works for n < length of string
+hasNoCapitals( [ "A", "B", "C", "B" ], 4 ) -- function works when all capital
+hasNoCapitals( [ "a", "b", "c", "d" ], 4 ) -- function works when all lowercase
+hasNoCapitals( [ "a", "B", "c", "d" ], 4 ) -- one capital causes function to yield false
+hasNoCapitals( [ "aAb", "bCb", "cDc", "dEd" ], 4 ) -- any capital at any point in the element or character in string causes function to yield false
+
+identicalValuesTogether( [ "A", "B", "C", "B" ], 0 ) -- n = 0
+identicalValuesTogether( [ "A", "B", "C", "B" ], -10 ) -- n < 0
+identicalValuesTogether( [ "A", "B", "B", "D" ], 3 ) -- works for n < length of string
+identicalValuesTogether( [ "A", "B", "C", "B" ], 4 ) -- function false when identical values are not  next to each other
+identicalValuesTogether( [ "B", "B", "A", "B" ], 4 ) -- all identical values not together, even when 2 are and 1 isn't
+identicalValuesTogether( [ "B", "B", "A", "A" ], 4 ) -- works for multiple pairs
+identicalValuesTogether( [ "B", "B", "A", "C", "A" ], 5) -- one of pairs not together
+identicalValuesTogether( [ "B", "B", "B", "C" ], 4 ) -- works for three in a row
+identicalValuesTogether( [ "B", "B", "C", "B", "B"], 5 ) -- 2 pairs of same value still false
+
+hasTwoOrMoreDuplicates( [ "A", "A", "B", "B" ], 0 ) -- n = 0
+hasTwoOrMoreDuplicates( [ "A", "A", "B", "B" ], -20 ) -- n < 0
+hasTwoOrMoreDuplicates( [ "A", "A", "A", "B" ], 3 ) -- works for n < length of string
+hasTwoOrMoreDuplicates( [ "a", "a", "b", "b" ], 4 ) -- 2 pairs
+hasTwoOrMoreDuplicates( [ "a", "a", "a", "b", "b" ], 5 ) -- 3 of a kind and a pair
+hasTwoOrMoreDuplicates( [ "a", "a", "a", "c", "b" ], 5 ) -- 3 of a kind only
+hasTwoOrMoreDuplicates( [ "a", "b", "a", "b", "a" ], 5 ) -- alternating pair and 3 of a kind
+hasTwoOrMoreDuplicates( [ "a", "A", "b", "B", "d" ], 5 ) -- upper and lower case don't count as a pair
+
+shiftLeft( [ "A", "B", "C", "B" ], 4, 0, "foo" ) -- amt = 0
+shiftLeft( [ "A", "B", "C", "B" ], 4, -12, "foo" ) -- amt < 0
+shiftLeft( [ "A", "B", "C", "B" ], 0, -12, "foo" ) -- n = 0, amt < 0
+shiftLeft( [ "A", "B", "C", "B" ], 0, 5,  "foo" ) -- n = 0
+shiftLeft( [ "A", "B", "C", "B" ], -25, 0,  "foo" ) -- n < 0
+shiftLeft( [ "a", "a", "a", "c", "b" ], 5, 2, "foo" ) -- works for amt < n
+shiftLeft( [ "a", "a", "a", "c", "b" ], 5, 5, "foo" ) -- works for amt = n
+shiftLeft( [ "a", "a", "a", "c", "b" ], 5, 5, "foo" ) -- works for amt > n
+shiftLeft( [ "a", "a", "foo", "c", "b" ], 5, 1, "foo" ) -- works for any value of amt
+
+replaceFirstAndLastOccurrences( [ "A", "B", "C", "B" ], -4, 'A', 'z' ) -- n < 0
+replaceFirstAndLastOccurrences( [ "A", "B", "C", "B" ], 0, 'A', 'z' ) -- n = 0
+replaceFirstAndLastOccurrences( [ "A", "B", "C", "B" ], -4, 'A', 'z' ) 
+replaceFirstAndLastOccurrences( [ "A", "B", "C", "B" ], 4, 'P', 'z' ) -- if charToFind not found, nothing changes
+replaceFirstAndLastOccurrences( [ "AAA", "ABA", "ACAAA", "BA" ], 4, 'A', 'z') -- works for any combination of letters and occurrences of letter in each element
+replaceFirstAndLastOccurrences( [ "AAA", "ABA", "ACAAA", "BA" ], 4, 'A', 'A') -- works even when only one occurrence of charToFind in an element when charToFind = charToReplace
+
+

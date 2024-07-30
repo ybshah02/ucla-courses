@@ -1,0 +1,84 @@
+Yash Shah #405565567
+
+1.
+
+endlendl
+endline
+
+2. 
+
+this prints an upside down right triangle where the hypotenuse is the hashtag sign.
+ex. if len = 5, the output would be something like 
+    #
+   #
+  #
+ #
+#
+
+3.
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int len;
+
+	cout << "Enter a number: ";
+	cin >> len;
+
+	for (int i = 0; i < len; i++)
+	{
+		int j = i + 1;
+		(while j < len)
+		{
+			cout << " ";
+			j+=1;
+		}
+		cout << "#" << endl;
+	}
+         return( 0 );
+}
+
+4.
+
+int main()
+    {
+        int len;
+
+        cout << "Enter a number: ";
+        cin >> len;
+        if (len > 0){
+            int i=0;
+            do
+            {
+                int j=i+1;
+                while (j < len)
+                {
+                    cout << " ";
+                    j+=1;
+                }
+                cout << "#" << endl;
+                i+=1;
+            }while(i<len);
+        }
+        return( 0 );
+    }
+
+5. 
+
+switch(weekday) {
+            case 1:
+                cout << "rainy days and mondays get me down";
+                break;
+            case 2:
+                cout << "ruby tuesday";
+                break;
+            case 6:
+            case 7:
+                cout << "wonderful weekend";
+                break;
+            default:
+                cout << "regular day";
+                break;
+        }

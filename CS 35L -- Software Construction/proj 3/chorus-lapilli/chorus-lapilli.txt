@@ -1,0 +1,45 @@
+Yash Shah
+
+To build this application, first create the application directory with npx create-react-app chorus-lapilli. We can use a lot of the similar work from the tic-tac-toe application tutorial, so for now we can copy over the index.js and index.css files from my-app to this directory and work around that. 
+
+First, we must implement the first new rule, that is, after the first three moves for both 'X' and 'O', one now has to use their existing pieces to win the game. 
+
+To do so, we first have to create a restriction in freely selecting squares, that is, only allow to freely select squares till stepNumber is equal to 6. Refer to line 77. 
+
+If step number is greater than 6, then we check if the current player's mark is at the center to validate rule 2 of this game. 
+
+If the player's mark is in the center, then we force the player to move the center mark to an adjacent position. Refer to line 97.
+
+If the player's mark is not in the center, then we allow the user's choice in determining which mark to move by allowing them to click one of their mark's spot to delete the tile. They are not allowed to move their mark to the same spot as the spot they picked the mark up from, nor in the tile of another mark.
+
+If the spot is open, then we check if the position attempting to be placed on is adjacent to the spot picked up from. To create this function, we can create an array of 9 entries, one associated for each position in the box where each index holds an array of all the indexes adjacent to the index spot. We can input the picked position and placed position to determine which array of adjacent indexes to look at, and parse through to determine if the placed position matches one of those indexes. 
+
+If the spot chosen is adjacent to the spot picked up from, then we can set that spot to the player's mark and update the state of the gameboard to reflect these changes.
+
+Output of npm pack --dry-run:
+
+yash@Yashs-MacBook-Pro-2 chorus-lapilli % npm pack --dry-run       
+npm notice 
+npm notice 📦  chorus-lapilli@0.1.0
+npm notice === Tarball Contents === 
+npm notice 736B  src/index.css       
+npm notice 1.7kB public/index.html   
+npm notice 3.9kB public/favicon.ico  
+npm notice 6.6kB src/index.js        
+npm notice 492B  public/manifest.json
+npm notice 817B  package.json        
+npm notice 3.4kB README.md           
+npm notice 5.3kB public/logo192.png  
+npm notice 9.7kB public/logo512.png  
+npm notice 67B   public/robots.txt   
+npm notice === Tarball Details === 
+npm notice name:          chorus-lapilli                          
+npm notice version:       0.1.0                                   
+npm notice filename:      chorus-lapilli-0.1.0.tgz                
+npm notice package size:  24.1 kB                                 
+npm notice unpacked size: 32.7 kB                                 
+npm notice shasum:        45dc287c124c2611c66803142ebf8f980cfc3ac9
+npm notice integrity:     sha512-QddboI5ZbsBa0[...]gHmhdp9dlobXA==
+npm notice total files:   10                                      
+npm notice 
+chorus-lapilli-0.1.0.tgz

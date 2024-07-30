@@ -1,0 +1,466 @@
+Yash Shah #405-565-567 Project 7 Report
+
+a. 
+I didn't find the syntax of this project entirely difficult, but the wording of the project spec
+was confusing at times, so I had to spend some time reading the project spec several times. 
+
+b. 
+
+Driver code Player class ---
+
+main driver code -
+
+Player p;
+assert( p.getRoundsWon( ) == 0 );   // nothing won yet...
+p.wonARound( );     
+assert( p.getRoundsWon( ) == 1 );   // won 1!
+p.roll( );                          // a random toss
+Die d1; d1.setValue( 1 );
+Die d6; d6.setValue( 6 );   
+p.roll( d1, d6 );                   // cheating...
+assert( p.largestDie( ).getValue( ) == 6 );
+assert( p.smallestDie( ).getValue( ) == 1 );
+
+rolls yield same values -
+
+Player p;
+assert( p.getRoundsWon( ) == 0 );   // nothing won yet...
+p.wonARound( );     
+assert( p.getRoundsWon( ) == 1 );   // won 1!
+p.roll( );                          // a random toss
+Die d1; d1.setValue( 3 );
+Die d6; d6.setValue( 3 );   
+p.roll( d1, d6 );                   // cheating...
+assert( p.largestDie( ).getValue( ) == 3 );
+assert( p.smallestDie( ).getValue( ) == 3 );
+
+Driver Code BeatThat class ---
+
+testing for similar equivalence of game outcomes
+
+using namespace cs31;
+BeatThat game;
+// 5 random rounds of play...
+for (int i = 0; i < 5; i++)
+{
+    game.humanPlay( );
+    game.computerPlay( );
+    game.endTurn( );
+}
+switch( game.determineGameOutcome( ) )
+{
+    cs31::BeatThat::HUMANWON:
+       cout << "You won!" << endl;
+       break;
+    cs31:BeatThat::COMPUTERWON:
+       cout << "You lost!" << endl;
+       break;
+    cs31::BeatThat::TIEDGAME:
+       cout << "Tied!" << endl;
+       break;
+}
+
+Testing Entire Program ---
+
+All games end in tie --- 
+
+Die d1; d1.setValue( 1 );
+Die d2; d2.setValue( 2 );
+Die d3; d3.setValue( 3 );
+Die d4; d4.setValue( 4 );
+Die d5; d5.setValue( 5 );
+Die d6; d6.setValue( 6 );
+BeatThat game;
+game.humanPlay( d6, d6 );
+game.computerPlay( d6, d6 );
+game.endTurn( );
+game.humanPlay( d6, d6 );
+game.computerPlay( d6, d6 );
+game.endTurn( );
+game.humanPlay( d6, d6 );
+game.computerPlay( d6, d6 );
+game.endTurn( );
+game.humanPlay( d6, d6 );
+game.computerPlay( d6, d6 );
+game.endTurn( );
+game.humanPlay( d6, d6 );
+game.computerPlay( d6, d6 );
+game.endTurn( );
+assert( game.isGameOver() == true );
+assert ( game.getHuman().getRoundsWon() == 0 );
+assert ( game.getComputer().getRoundsWon() == 0 );
+assert( game.determineGameOutcome( ) == cs31::BeatThat::TIEDGAME );
+cout << "all tests passed!" << endl;
+return 0; 
+
+4 ties, Computer wins --- 
+
+Die d1; d1.setValue( 1 );
+Die d2; d2.setValue( 2 );
+Die d3; d3.setValue( 3 );
+Die d4; d4.setValue( 4 );
+Die d5; d5.setValue( 5 );
+Die d6; d6.setValue( 6 );
+BeatThat game;
+game.humanPlay( d6, d6 );
+game.computerPlay( d6, d6 );
+game.endTurn( );
+game.humanPlay( d6, d6 );
+game.computerPlay( d6, d6 );
+game.endTurn( );
+game.humanPlay( d6, d6 );
+game.computerPlay( d6, d6 );
+game.endTurn( );
+game.humanPlay( d6, d6 );
+game.computerPlay( d6, d6 );
+game.endTurn( );
+game.humanPlay( d2, d3 );
+game.computerPlay( d3, d5 );
+game.endTurn( );
+assert( game.isGameOver() == true );
+assert ( game.getHuman().getRoundsWon() == 0 );
+assert ( game.getComputer().getRoundsWon() == 1 );
+assert( game.determineGameOutcome( ) == cs31::BeatThat::COMPUTERWONGAME );
+cout << "all tests passed!" << endl;
+return 0;    
+
+4 ties, Player wins --- 
+
+Die d1; d1.setValue( 1 );
+Die d2; d2.setValue( 2 );
+Die d3; d3.setValue( 3 );
+Die d4; d4.setValue( 4 );
+Die d5; d5.setValue( 5 );
+Die d6; d6.setValue( 6 );
+BeatThat game;
+game.humanPlay( d6, d6 );
+game.computerPlay( d6, d6 );
+game.endTurn( );
+game.humanPlay( d6, d6 );
+game.computerPlay( d6, d6 );
+game.endTurn( );
+game.humanPlay( d6, d6 );
+game.computerPlay( d6, d6 );
+game.endTurn( );
+game.humanPlay( d6, d6 );
+game.computerPlay( d6, d6 );
+game.endTurn( );
+game.humanPlay( d5, d3 );
+game.computerPlay( d3, d2 );
+game.endTurn( );
+assert( game.isGameOver() == true );
+assert ( game.getHuman().getRoundsWon() == 0 );
+assert ( game.getComputer().getRoundsWon() == 1 );
+assert( game.determineGameOutcome( ) == cs31::BeatThat::HUMANWONGAME );
+cout << "all tests passed!" << endl;
+return 0;    
+
+3 ties, Player wins two --- 
+
+Die d1; d1.setValue( 1 );
+Die d2; d2.setValue( 2 );
+Die d3; d3.setValue( 3 );
+Die d4; d4.setValue( 4 );
+Die d5; d5.setValue( 5 );
+Die d6; d6.setValue( 6 );
+BeatThat game;
+game.humanPlay( d6, d6 );
+game.computerPlay( d6, d6 );
+game.endTurn( );
+game.humanPlay( d6, d6 );
+game.computerPlay( d6, d6 );
+game.endTurn( );
+game.humanPlay( d6, d6 );
+game.computerPlay( d6, d6 );
+game.endTurn( );
+game.humanPlay( d6, d2 );
+game.computerPlay( d1, d1 );
+game.endTurn( );
+game.humanPlay( d5, d3 );
+game.computerPlay( d3, d2 );
+game.endTurn( );
+assert( game.isGameOver() == true );
+assert ( game.getHuman().getRoundsWon() == 2 );
+assert ( game.getComputer().getRoundsWon() == 0 );
+assert( game.determineGameOutcome( ) == cs31::BeatThat::HUMANWONGAME );
+cout << "all tests passed!" << endl;
+return 0;    
+
+3 ties, Computer wins two --- 
+
+Die d1; d1.setValue( 1 );
+Die d2; d2.setValue( 2 );
+Die d3; d3.setValue( 3 );
+Die d4; d4.setValue( 4 );
+Die d5; d5.setValue( 5 );
+Die d6; d6.setValue( 6 );
+BeatThat game;
+game.humanPlay( d6, d6 );
+game.computerPlay( d6, d6 );
+game.endTurn( );
+game.humanPlay( d6, d6 );
+game.computerPlay( d6, d6 );
+game.endTurn( );
+game.humanPlay( d6, d6 );
+game.computerPlay( d6, d6 );
+game.endTurn( );
+game.humanPlay( d6, d1 );
+game.computerPlay( d3, d6 );
+game.endTurn( );
+game.humanPlay( d2, d3 );
+game.computerPlay( d3, d5 );
+game.endTurn( );
+assert( game.isGameOver() == true );
+assert ( game.getHuman().getRoundsWon() == 2 );
+assert ( game.getComputer().getRoundsWon() == 0 );
+assert( game.determineGameOutcome( ) == cs31::BeatThat::COMPUTERWONGAME );
+cout << "all tests passed!" << endl;
+return 0;  
+
+3 ties, both players win once --- 
+
+Die d1; d1.setValue( 1 );
+Die d2; d2.setValue( 2 );
+Die d3; d3.setValue( 3 );
+Die d4; d4.setValue( 4 );
+Die d5; d5.setValue( 5 );
+Die d6; d6.setValue( 6 );
+BeatThat game;
+game.humanPlay( d6, d6 );
+game.computerPlay( d6, d6 );
+game.endTurn( );
+game.humanPlay( d6, d6 );
+game.computerPlay( d6, d6 );
+game.endTurn( );
+game.humanPlay( d6, d6 );
+game.computerPlay( d6, d6 );
+game.endTurn( );
+game.humanPlay( d6, d1 );
+game.computerPlay( d1, d1 );
+game.endTurn( );
+game.humanPlay( d2, d3 );
+game.computerPlay( d3, d5 );
+game.endTurn( );
+assert( game.isGameOver() == true );
+assert ( game.getHuman().getRoundsWon() == 1 );
+assert ( game.getComputer().getRoundsWon() == 1 );
+cout << "all tests passed!" << endl;
+assert( game.determineGameOutcome( ) == cs31::BeatThat::TIEDGAME );
+return 0;
+
+2 ties, Human wins twice, Computer wins once --- 
+
+Die d1; d1.setValue( 1 );
+Die d2; d2.setValue( 2 );
+Die d3; d3.setValue( 3 );
+Die d4; d4.setValue( 4 );
+Die d5; d5.setValue( 5 );
+Die d6; d6.setValue( 6 );
+BeatThat game;
+game.humanPlay( d5, d6 );
+game.computerPlay( d6, d5 );
+game.endTurn( );
+game.humanPlay( d3, d6 );
+game.computerPlay( d6, d3 );
+game.endTurn( );
+game.humanPlay( d4, d1 );
+game.computerPlay( d1, d3 );
+game.endTurn( );
+game.humanPlay( d5, d3 );
+game.computerPlay( d3, d3 );
+game.endTurn( );
+game.humanPlay( d2, d3 );
+game.computerPlay( d3, d5 );
+game.endTurn( );
+assert( game.isGameOver() == true );
+assert ( game.getHuman().getRoundsWon() == 2 );
+assert ( game.getComputer().getRoundsWon() == 1 );
+cout << "all tests passed!" << endl;
+assert( game.determineGameOutcome( ) == cs31::BeatThat::HUMANWONGAME );
+return 0;
+
+2 ties, Computer wins twice, Human wins once --- 
+
+Die d1; d1.setValue( 1 );
+Die d2; d2.setValue( 2 );
+Die d3; d3.setValue( 3 );
+Die d4; d4.setValue( 4 );
+Die d5; d5.setValue( 5 );
+Die d6; d6.setValue( 6 );
+BeatThat game;
+game.humanPlay( d5, d6 );
+game.computerPlay( d6, d5 );
+game.endTurn( );
+game.humanPlay( d3, d6 );
+game.computerPlay( d6, d3 );
+game.endTurn( );
+game.humanPlay( d3, d1 );
+game.computerPlay( d1, d4 );
+game.endTurn( );
+game.humanPlay( d5, d3 );
+game.computerPlay( d3, d3 );
+game.endTurn( );
+game.humanPlay( d2, d3 );
+game.computerPlay( d3, d5 );
+game.endTurn( );
+assert( game.isGameOver() == true );
+assert ( game.getHuman().getRoundsWon() == 1 );
+assert ( game.getComputer().getRoundsWon() == 2 );
+cout << "all tests passed!" << endl;
+assert( game.determineGameOutcome( ) == cs31::BeatThat::COMPUTERWONGAME );
+return 0;
+
+1 tie, Human wins twice, computer wins twice ---
+
+Die d1; d1.setValue( 1 );
+Die d2; d2.setValue( 2 );
+Die d3; d3.setValue( 3 );
+Die d4; d4.setValue( 4 );
+Die d5; d5.setValue( 5 );
+Die d6; d6.setValue( 6 );
+BeatThat game;
+game.humanPlay( d5, d6 );
+game.computerPlay( d6, d5 );
+game.endTurn( );
+game.humanPlay( d3, d6 );
+game.computerPlay( d6, d2 );
+game.endTurn( );
+game.humanPlay( d4, d1 );
+game.computerPlay( d1, d3 );
+game.endTurn( );
+game.humanPlay( d3, d3 );
+game.computerPlay( d3, d5 );
+game.endTurn( );
+game.humanPlay( d2, d3 );
+game.computerPlay( d3, d5 );
+game.endTurn( );
+assert( game.isGameOver() == true );
+assert ( game.getHuman().getRoundsWon() == 2 );
+assert ( game.getComputer().getRoundsWon() == 2 );
+cout << "all tests passed!" << endl;
+assert( game.determineGameOutcome( ) == cs31::BeatThat::TIEDGAME );
+return 0;
+
+1 tie, Human wins more than twice ---
+
+Die d1; d1.setValue( 1 );
+Die d2; d2.setValue( 2 );
+Die d3; d3.setValue( 3 );
+Die d4; d4.setValue( 4 );
+Die d5; d5.setValue( 5 );
+Die d6; d6.setValue( 6 );
+BeatThat game;
+game.humanPlay( d5, d6 );
+game.computerPlay( d6, d5 );
+game.endTurn( );
+game.humanPlay( d3, d6 );
+game.computerPlay( d6, d2 );
+game.endTurn( );
+game.humanPlay( d4, d1 );
+game.computerPlay( d1, d3 );
+game.endTurn( );
+game.humanPlay( d5, d3 );
+game.computerPlay( d3, d4 );
+game.endTurn( );
+game.humanPlay( d2, d3 );
+game.computerPlay( d3, d5 );
+game.endTurn( );
+assert( game.isGameOver() == true );
+assert ( game.getHuman().getRoundsWon() == 3 );
+assert ( game.getComputer().getRoundsWon() == 2 );
+cout << "all tests passed!" << endl;
+assert( game.determineGameOutcome( ) == cs31::BeatThat::HUMANONEGAME );
+return 0;
+
+1 tie, Computer wins more than twice --- 
+
+Die d1; d1.setValue( 1 );
+Die d2; d2.setValue( 2 );
+Die d3; d3.setValue( 3 );
+Die d4; d4.setValue( 4 );
+Die d5; d5.setValue( 5 );
+Die d6; d6.setValue( 6 );
+BeatThat game;
+game.humanPlay( d5, d6 );
+game.computerPlay( d6, d5 );
+game.endTurn( );
+game.humanPlay( d3, d6 );
+game.computerPlay( d6, d2 );
+game.endTurn( );
+game.humanPlay( d3, d1 );
+game.computerPlay( d2, d4 );
+game.endTurn( );
+game.humanPlay( d3, d3 );
+game.computerPlay( d3, d5 );
+game.endTurn( );
+game.humanPlay( d2, d3 );
+game.computerPlay( d3, d5 );
+game.endTurn( );
+assert( game.isGameOver() == true );
+assert ( game.getHuman().getRoundsWon() == 1 );
+assert ( game.getComputer().getRoundsWon() == 3 );
+cout << "all tests passed!" << endl;
+assert( game.determineGameOutcome( ) == cs31::BeatThat::COMPUTERWONGAME );
+return 0;
+
+0 ties, Human wins 
+
+Die d1; d1.setValue( 1 );
+Die d2; d2.setValue( 2 );
+Die d3; d3.setValue( 3 );
+Die d4; d4.setValue( 4 );
+Die d5; d5.setValue( 5 );
+Die d6; d6.setValue( 6 );
+BeatThat game;
+game.humanPlay( d5, d6 );
+game.computerPlay( d6, d4 );
+game.endTurn( );
+game.humanPlay( d3, d6 );
+game.computerPlay( d6, d2 );
+game.endTurn( );
+game.humanPlay( d4, d1 );
+game.computerPlay( d2, d3 );
+game.endTurn( );
+game.humanPlay( d5, d3 );
+game.computerPlay( d3, d4 );
+game.endTurn( );
+game.humanPlay( d2, d3 );
+game.computerPlay( d3, d5 );
+game.endTurn( );
+assert( game.isGameOver() == true );
+assert ( game.getHuman().getRoundsWon() == 4 );
+assert ( game.getComputer().getRoundsWon() == 1 );
+cout << "all tests passed!" << endl;
+assert( game.determineGameOutcome( ) == cs31::BeatThat::HUMANWONGAME );
+return 0;
+
+0 ties, Computer wins
+
+Die d1; d1.setValue( 1 );
+Die d2; d2.setValue( 2 );
+Die d3; d3.setValue( 3 );
+Die d4; d4.setValue( 4 );
+Die d5; d5.setValue( 5 );
+Die d6; d6.setValue( 6 );
+BeatThat game;
+game.humanPlay( d4, d6 );
+game.computerPlay( d6, d5 );
+game.endTurn( );
+game.humanPlay( d2, d6 );
+game.computerPlay( d6, d3 );
+game.endTurn( );
+game.humanPlay( d3, d1 );
+game.computerPlay( d2, d4 );
+game.endTurn( );
+game.humanPlay( d3, d3 );
+game.computerPlay( d3, d5 );
+game.endTurn( );
+game.humanPlay( d6, d3 );
+game.computerPlay( d3, d5 );
+game.endTurn( );
+assert( game.isGameOver() == true );
+assert ( game.getHuman().getRoundsWon() == 1 );
+assert ( game.getComputer().getRoundsWon() == 4 );
+cout << "all tests passed!" << endl;
+assert( game.determineGameOutcome( ) == cs31::BeatThat::COMPUTERWONGAME );
+return 0;

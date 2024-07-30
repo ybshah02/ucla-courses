@@ -1,0 +1,26 @@
+Server's LAN IP: 192.168.1.1
+Server's WAN IP: 98.149.235.132
+___a
+192.168.1.100
+8080
+8080
+___b
+192.168.1.200
+9000
+443
+___b
+Awaiting connections...
+Connected to: 0.0.0.0
+Connected to: 192.168.1.100
+Connected to: 192.168.1.200
+Bytes Read: 28
+Bytes Read: 28
+Destination not found: 10.0.0.10
+LAN PORT 8080 LAN2 10000
+LAN PORT 9000 LAN2 10000
+Here: 
+{ 192.168.1.200: 6, 192.168.1.100: 5, 0.0.0.0: 4, }
+Source IP: 98.149.235.132
+Updated Checksum 58285
+Read Checksum 58285
+Packet routed to 10.0.0.10

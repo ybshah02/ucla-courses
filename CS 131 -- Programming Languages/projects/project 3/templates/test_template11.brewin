@@ -1,0 +1,21 @@
+(tclass MyGenericClass (field_type)
+  (method void print_value ((field_type x)) (print x))
+  (method void compare_fieldtype_to_int ((field_type str_val)) 
+    (begin
+        (print (== str_val 4))
+    )
+  )
+)
+
+(class main
+  (method MyGenericClass test_method ()
+    (begin
+      (return (new MyGenericClass))
+    )
+  )
+  (method void main ()
+    (begin
+      (print "this does nothing now")
+    )
+  )
+)

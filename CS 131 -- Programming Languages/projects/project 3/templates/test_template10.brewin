@@ -1,0 +1,30 @@
+(tclass Pair (first_type second_type)
+  (field first_type first)
+  (field second_type second)
+  (method void set_values ((first_type x) (second_type y)) 
+    (begin
+      (set first x)
+      (set second y)
+    )
+  )
+  (method void print_pair () 
+    (begin
+      (print first)
+      (print second)
+    )
+  )
+)
+
+(class main
+  (method void main ()
+    (begin
+      (let ((Pair@int@string myPair null))
+        (begin
+          (set myPair (new Pair@int@string) )
+          (call myPair set_values 5 "Hello, Brewin!")
+          (call myPair print_pair)
+        )
+      )
+    )
+  )
+)

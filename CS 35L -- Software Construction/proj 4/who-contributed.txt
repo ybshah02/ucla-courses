@@ -1,0 +1,6 @@
+git grep -n newspaper -- this was used to display all the files and the references to the word newspaper. scrolling through that output, we find that "Even newspaper reports present contradictory information" is in the northamerica file on line 896.
+git log -S "Even newspaper reports" to find the earliest commit for this line.
+We find that David Olson committed the changes with that statement on commit c12b432741eed9a422fbf99fa27af6e7a941d88b on the date of 12/21/1995.
+So then we git show c12b432741eed9a422fbf99fa27af6e7a941d88b, and then control F to find where "Even newspaper reports present contradictory information", and see that this was added by Paul Eggert on 12/19/1995.
+
+Paul Eggert on 12/19/1995 made these changes

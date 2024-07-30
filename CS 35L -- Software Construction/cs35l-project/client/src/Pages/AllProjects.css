@@ -1,0 +1,125 @@
+* 
+{
+    margin: 0;
+    padding: 0;
+    font-family:'Georgia', Georgia, serif;
+}
+
+h2
+{
+    color: #005587;
+    position: relative;
+    padding: 10px;
+}
+
+.AllProjects .MainLogo
+{
+    position: relative;
+    width: 20%;
+    height: auto;
+    padding-top: 25px;
+    padding-bottom: 10px;
+    filter: drop-shadow(0px 2px 3px #AFAFAF)
+}
+
+.AllProjects .Title {
+    margin: left;
+    color: #005587;
+    left: 575px;
+    font-size: 40px;
+    top: 140px;
+}
+
+
+.AllProjects input {
+    position: relative;
+    width: 500px;
+    height: 50px;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 1px solid #000000;
+    padding: 20px;
+    font-size: large;
+    left: -340px;
+    top: 10px;
+    filter: drop-shadow(0px 2px 2px #2F2F2F)
+    
+}
+
+.AllProjects button {
+    position: relative;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+}
+
+.AllProjects .Search {
+    position:relative;
+    top: -40px;
+    left: 240px;
+    filter: drop-shadow(0px 2px 2px #2F2F2F)
+}
+
+.AllProjects .Create {
+    position:relative;
+    color: white;
+    left: 260px;
+    top: -56px;
+    background-color: #005587;
+    font-size: large;
+    padding: 20px;
+    line-height: 15px;
+    filter: drop-shadow(0px 2px 2px #2F2F2F)
+}
+
+.AllProjects .ProjectListTable {
+    position: relative;
+    display: block;
+    color: black;
+    left: 180px;
+    font-size: larger;
+    border-spacing: 100px 10px;
+    font-weight: bold;
+}
+
+.AllProjects .ProjectListTableHead {
+    position: relative;
+    display: block;
+    color: #005587;
+    font-size: larger;
+    left: 30px;
+    border-spacing: 100px 10px;
+    font-weight: bold;
+}
+.AllProjects .BackToProjects {
+    position:relative;
+    color: white;
+    left: 275px;
+    top: -56px;
+    line-height: 15px;
+    font-size: large;
+    background-color: #005587;
+    padding: 20px;
+    filter: drop-shadow(0px 2px 2px #2F2F2F)
+}
+
+.LoadingDiv {
+    z-index: 100;
+    height: 10em;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center ;
+}
+
+.AllProjects .Interest {
+    position:relative;
+    color: white;
+    left: 290px;
+    top: -56px;
+    line-height: 15px;
+    font-size: large;
+    background-color: #005587;
+    padding: 20px;
+    filter: drop-shadow(0px 2px 2px #2F2F2F)
+}

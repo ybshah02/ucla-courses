@@ -1,0 +1,31 @@
+1. Use RSat to solve the SAT instance obtained above. Is the instance satisfiable?
+
+No
+
+2. Do the conversion again, this time, with 4 colors. Use RSat to solve this new SAT instance. Is the
+instance satisfiable?
+
+Yes
+
+3. What do the answers of these two SAT instances tell you about the graph coloring problem of the
+above graph? Can you give a solution (a coloring) to the graph coloring problem of the above graph
+based on the results of RSat?
+
+highest degree of the nodes in the above graph is 4
+
+solution:
+
+node    color
+----    -----
+1       green
+2       red  
+3       green
+4       yellow
+5       blue
+6       red
+7       yellow
+
+4. Now, use a similar approach to solve the graph coloring of the graph described in graph2.txt. What is
+the minimum number of colors required to properly color this graph?
+
+min # of colors = 8

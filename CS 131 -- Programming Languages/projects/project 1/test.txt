@@ -1,0 +1,34 @@
+(class person
+   (field name "")
+   (field age 0)
+   (method init (n a) (begin (set name n) (set age a)))
+   (method talk (to_whom) (print name " says hello to " to_whom))
+   (method get_age () (return age))
+)
+
+(class person
+   (field name "")
+   (field age 0)
+   (method init (n a) (begin (set name n) (set age a)))
+   (method talk (to_whom) (print name " says hello to " to_whom))
+   (method get_age () (return age))
+)
+
+(class main
+ (field p null)
+ (field boo true)
+ (field x null)
+ (method tell_joke (to_whom) (print "Hey " to_whom ", knock knock!"))
+ (method main ()
+   (begin
+      (if (== boo true) (print "it's true"))
+      (if (== x null) (print “it’s true”))
+      (if (! boo) (print "the variable is false"))
+      (call me tell_joke "Leia")  # calling method in the current obj
+      (set p (new person))    
+      (call p init "Siddarth" 25)  # calling method in other object
+      (call p talk "Boyan")        # calling method in other object
+      (print "Siddarth's age is " (call p get_age))
+   )
+ )
+)

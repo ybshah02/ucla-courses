@@ -1,0 +1,1 @@
+First, we see by using git branch that our cloned repository only contains one branch master, while the git branch in eggert's folder contains 4 other branches--maint, next, seen, todo.

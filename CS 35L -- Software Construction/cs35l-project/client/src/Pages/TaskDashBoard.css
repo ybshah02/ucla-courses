@@ -1,0 +1,105 @@
+* 
+{
+    margin: 0;
+    padding: 0;
+    font-family:'Georgia', Georgia, serif;
+}
+
+h2
+{
+    color: #005587;
+    position: relative;
+    padding: 10px;
+}
+
+.TaskDashBoard .MainLogo
+{
+    position: relative;
+    width: 20%;
+    height: auto;
+    padding-top: 25px;
+    padding-bottom: 10px;
+    filter: drop-shadow(0px 2px 3px #AFAFAF)
+}
+
+.TaskDashBoard .Title {
+    margin: left;
+    color: #005587;
+    left: 575px;
+    font-size: 40px;
+    top: 140px;
+}
+
+
+.TaskDashBoard input {
+    position: relative;
+    width: 500px;
+    height: 50px;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 1px solid #000000;
+    padding: 20px;
+    font-size: large;
+    left: -200px;
+    top: 10px;
+    filter: drop-shadow(0px 2px 2px #2F2F2F)
+}
+
+.TaskDashBoard button {
+    position: relative;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+}
+
+.TaskDashBoard .Search {
+    position:relative;
+    top: -40px;
+    left: 270px;
+    filter: drop-shadow(0px 2px 2px #2F2F2F)
+}
+
+.TaskDashBoard .Create {
+    position:relative;
+    color: white;
+    left: 285px;
+    top: -56px;
+    background-color: #005587;
+    font-size: large;
+    padding: 20px;
+    line-height: 15px;
+    filter: drop-shadow(0px 2px 2px #2F2F2F)
+}
+
+.TaskDashBoard .BackToProjects {
+    position:relative;
+    color: white;
+    left: 300px;
+    top: -56px;
+    line-height: 15px;
+    font-size: large;
+    background-color: #005587;
+    padding: 20px;
+    filter: drop-shadow(0px 2px 2px #2F2F2F)
+}
+
+.TaskDashBoard .TaskListTable
+{
+    position: relative;
+    display: block;
+    color: black;
+    left: 180px;
+    font-size: larger;
+    border-spacing: 100px 10px;
+    font-weight: bold;
+}
+.TaskDashBoard .TaskListTableHead {
+    position: relative;
+    display: block;
+    color: #005587;
+    font-size: larger;
+    left: 30px;
+    border-spacing: 100px 10px;
+    font-weight: bold;
+}
+

@@ -1,0 +1,91 @@
+
+
+====================================================================================
+Summary
+====================================================================================
+
+Date: 2023-12-07 06:16:29
+Target Device: /opt/xilinx/platforms/xilinx_u200_gen3x16_xdma_2_202110_1/xilinx_u200_gen3x16_xdma_2_202110_1.xpfm
+Target Frequency: 250MHz
+Estimated Frequency: 250MHz
++--------------------------+----------------------+-----------+-----------+----------+----------+-------+------+
+|          Kernel          |        Cycles        |    LUT    |    FF     |   BRAM   |   DSP    | URAM  |Detail|
++--------------------------+----------------------+-----------+-----------+----------+----------+-------+------+
+|CnnKernel (cnn-krnl.cpp:4)|448559420 (1794.238ms)|111315 (9%)|148318 (6%)|1592 (36%)|1082 (15%)|0 (~0%)|-     |
++--------------------------+----------------------+-----------+-----------+----------+----------+-------+------+
+
+
+====================================================================================
+Interface
+====================================================================================
+
++-----------------------+-----------+-----------+----+------------------+
+|       Interface       |SW Bitwidth|HW Bitwidth|Type|      Detail      |
++-----------------------+-----------+-----------+----+------------------+
+|input (cnn-krnl.cpp:5) |         32|        128|  RO|cached & coalesced|
+|weight (cnn-krnl.cpp:6)|         32|         32|  RO|cached[1]         |
+|bias (cnn-krnl.cpp:7)  |         32|        512|  RO|cached & coalesced|
+|output (cnn-krnl.cpp:8)|         32|        512|  WO|cached & coalesced|
++-----------------------+-----------+-----------+----+------------------+
+[1]: Suboptimal memory coalescing: variable 'weight' (cnn-krnl.cpp:6)
+  Reason: the lowest dimension size of on-chip buffer is not divisible by 2
+
+
+====================================================================================
+Performance Estimate (TC: Trip Count, AC: Accumulated Cycles, CPC: Cycles Per Call)
+====================================================================================
+
++------------------------------------------------+---+------------------+---------+--------------------+
+|                   Hierarchy                    |TC |        AC        |   CPC   |       Detail       |
++------------------------------------------------+---+------------------+---------+--------------------+
+|CnnKernel (cnn-krnl.cpp:4)                      |   |448559420 (100.0%)|448559420|-                   |
+|    auto memory burst for 'bias'(read)          |   |       16 (  0.0%)|       16|cache size=1024B    |
+|    loop i (cnn-krnl.cpp:14)                    |256| 12845057 (  2.9%)| 12845057|pipeline II=1       |
+|        loop h (cnn-krnl.cpp:15)                |224|                 -|        -|-                   |
+|            loop w (cnn-krnl.cpp:16)            |224|                 -|        -|-                   |
+|    loop j (cnn-krnl.cpp:24)                    |256|419457153 ( 93.5%)|419457153|pipelined           |
+|        auto memory burst for 'input'(read)     |   |  3326976 (  0.7%)|    12996|cache size=207936B  |
+|        auto memory burst for 'weight'(read)    |   |417798400 ( 93.1%)|  1632025|cache size=6528100B |
+|        loop i (cnn-krnl.cpp:25)                |256|411055360 ( 91.6%)|  1605685|pipeline II=1       |
+|            loop h (cnn-krnl.cpp:26)            |224|                 -|        -|-                   |
+|                loop w (cnn-krnl.cpp:28)        |224|                 -|        -|parallel factor=8x  |
+|                    loop p (cnn-krnl.cpp:29)    |  5|                 -|        -|parallel factor=5x  |
+|                        loop q (cnn-krnl.cpp:30)|  5|                 -|        -|parallel factor=5x  |
+|    loop i (cnn-krnl.cpp:40)                    |256| 12845059 (  2.9%)| 12845059|pipeline II=1       |
+|        loop h (cnn-krnl.cpp:41)                |224|                 -|        -|-                   |
+|            loop w (cnn-krnl.cpp:42)            |224|                 -|        -|-                   |
+|    loop i (cnn-krnl.cpp:49)                    |256|  3211269 (  0.7%)|  3211269|pipeline II=1       |
+|        loop h (cnn-krnl.cpp:50)                |112|                 -|        -|-                   |
+|            loop w (cnn-krnl.cpp:51)            |112|                 -|        -|-                   |
+|    auto memory burst for 'output'(write)       |   |   200704 (  0.0%)|   200704|cache size=12845056B|
++------------------------------------------------+---+------------------+---------+--------------------+
+
+
+====================================================================================
+Resource Estimate
+====================================================================================
+
++------------------------------------------------+-----------+-----------+----------+----------+-------+------+
+|                   Hierarchy                    |    LUT    |    FF     |   BRAM   |   DSP    | URAM  |Detail|
++------------------------------------------------+-----------+-----------+----------+----------+-------+------+
+|CnnKernel (cnn-krnl.cpp:4)                      |111315 (9%)|148318 (6%)|1592 (36%)|1082 (15%)|0 (~0%)|-     |
+|    auto memory burst for 'bias'(read)          |          -|          -|         -|         -|      -|-     |
+|    loop i (cnn-krnl.cpp:14)                    |          -|          -|         -|         -|      -|-     |
+|        loop h (cnn-krnl.cpp:15)                |          -|          -|         -|         -|      -|-     |
+|            loop w (cnn-krnl.cpp:16)            |          -|          -|         -|         -|      -|-     |
+|    loop j (cnn-krnl.cpp:24)                    |          -|          -|         -|         -|      -|-     |
+|        auto memory burst for 'input'(read)     |          -|          -|         -|         -|      -|-     |
+|        auto memory burst for 'weight'(read)    |          -|          -|         -|         -|      -|-     |
+|        loop i (cnn-krnl.cpp:25)                |          -|          -|         -|         -|      -|-     |
+|            loop h (cnn-krnl.cpp:26)            |          -|          -|         -|         -|      -|-     |
+|                loop w (cnn-krnl.cpp:28)        |          -|          -|         -|         -|      -|-     |
+|                    loop p (cnn-krnl.cpp:29)    |          -|          -|         -|         -|      -|-     |
+|                        loop q (cnn-krnl.cpp:30)|          -|          -|         -|         -|      -|-     |
+|    loop i (cnn-krnl.cpp:40)                    |          -|          -|         -|         -|      -|-     |
+|        loop h (cnn-krnl.cpp:41)                |          -|          -|         -|         -|      -|-     |
+|            loop w (cnn-krnl.cpp:42)            |          -|          -|         -|         -|      -|-     |
+|    loop i (cnn-krnl.cpp:49)                    |          -|          -|         -|         -|      -|-     |
+|        loop h (cnn-krnl.cpp:50)                |          -|          -|         -|         -|      -|-     |
+|            loop w (cnn-krnl.cpp:51)            |          -|          -|         -|         -|      -|-     |
+|    auto memory burst for 'output'(write)       |          -|          -|         -|         -|      -|-     |
++------------------------------------------------+-----------+-----------+----------+----------+-------+------+

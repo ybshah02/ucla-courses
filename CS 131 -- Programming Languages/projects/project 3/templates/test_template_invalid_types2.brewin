@@ -1,0 +1,19 @@
+(tclass ParamTest (type1 type2)
+  (method void print_param ((type1 x) (type2 y)) 
+    (begin
+      (print x)
+      (print y)
+    )
+  )
+)
+
+(class main
+  (method void main ()
+    (begin
+      (let ((ParamTest@int@type1 myClass))
+
+        #(call myClass print_param 5 "Hello, Brewin!")
+      )
+    )
+  )
+)

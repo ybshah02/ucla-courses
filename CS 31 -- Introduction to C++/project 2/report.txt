@@ -1,0 +1,47 @@
+Yash Shah #405565567
+
+a.
+
+I would say that there was two notable challenges to overcome in writing the code for this project. 
+
+The first challenge was in the first if statement when checking that the months were inputted in the right format -- instead of the && after each month.compare statement originally, I used || instead because I was directly translating English to code, which caused my code to continuously give me an output of "invalid month" even when I knew that the input was correct. 
+
+The second challenge revolved around the leap year offset in which I was a tad bit confused on how I would structure the if statement to not include years that were evenly divisible by 100, with the exception of being evenly divisible by 400. I tinkered around for a few minutes, trying different things and then I eventually got to the statement that I had now, but it took some time to make sure that years like 1800 and 1900 weren't considered leap years. 
+
+b.
+
+Month is a string of numbers rather than letters ("-101", -101, -101)
+
+Capitalization of first letter of month ("january", 30, 2000) 
+
+Capitalization only applies to first letter not full string ("SEPTEMBER", 30, 2000) 
+
+Random capitalization of letters in month input ("DEcEmBeR", 30, 2000)
+
+Extra space before correct format of month matters (" March", 30, 2000)
+
+Extra space after correct format of month matters ("October ", 30, 2000)
+
+Extra word after first correctly formatted month ("January january", 30, 2000)
+
+Negative day ("June", -5, 2000)
+
+Day greater than 31 ("June", 39, 2000)
+
+Negative year ("June", 20, -2000)
+
+Year greater than 3000 ("June", 20, 3100)
+
+Leap year that is divisible by 4, 100, and 400 ("August", 15, 2000)
+
+Leap year that is divisible by only 4 ("February", 15, 2020)
+
+Non Leap year that is divisible by 4 and 100, but not 400 ("January", 15, 1800)
+
+Non Leap year ("August", 15, "2002")
+
+Submission day is Saturday ("January", 23, 2021)
+
+Correct day on leap year ("February", 14, 1996) 
+
+Correct day on non-leap year that is divisible by 4 and 100, but not 400 ("July", 10, 2100)
